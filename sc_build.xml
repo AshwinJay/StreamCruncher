@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<project name="StreamCruncher" default="msg" basedir=".">
+    <target name="msg">
+      <echo message="Targets: clean, compile, package" />
+    </target>
+
+    <property name="root" location="."/>
+    <property name="src" location="${root}/src"/>
+    <property name="lib" location="${root}/lib"/>
+    <property name="classes" location="${root}/classes"/>
+    
+    <!-- 
+    Oracle Timestamps had to be cast to preserve the details.
+    Set path to your computer specific location.
+    -->
+    <property name="ojdbc.lib.loc" value="C:/oracle/product/10.2.0/db_1/jdbc/lib"/>
+    
+    <target name="clean">
+        <delete dir="${classes}"/>
+    </target>
+
+    <target name="init">
+        <tstamp/>
+        <property name="final.jar.name" value="streamcruncher.jar"/>
+    </target>
+
+    <path id="lib.jars">
+        <fileset dir="${lib}">
+            <include name="*.jar"/>
+        </fileset>
+
+        <fileset dir="${ojdbc.lib.loc}">
+            <include name="ojdbc14.jar"/>
+        </fileset>
+    </path>
+
+    <target name="compile" depends="init, clean">
+        <mkdir dir="${classes}"/>
+
+        <javac srcdir="${src}" destdir="${classes}"
+        target="1.5" debug="on">
+            <classpath refid="lib.jars"/>
+            <exclude name="temp/**" />
+            <exclude name="streamcruncher/test/**" />            
+        </javac>
+    </target>
+
+    <target name="package" depends="compile">
+        <jar jarfile="${root}/${final.jar.name}">
+            <fileset dir="${classes}">
+                <exclude name="streamcruncher/test/**" />
+            </fileset>
+
+            <fileset dir="${root}" includes="StreamCruncher.license.txt" />
+            <fileset dir="${root}" includes="GNUGPL.txt" />
+        </jar>
+    </target>
+</project>

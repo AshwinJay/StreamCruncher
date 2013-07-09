@@ -1,0 +1,226 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite" verbose="5">
+  <test name="SCTests">
+    <groups>
+      <run>
+       <include name="sc-init-required" />
+
+       <!-- Each DB has be run one at a time. -->
+
+       <include name="sc-test-h2" />
+
+       <!-- <include name="sc-test-ants" /> -->
+       <!-- <include name="sc-test-derby" /> -->
+       <!-- <include name="sc-test-firebird" /> -->
+       <!-- <include name="sc-test-mysql" /> -->
+       <!-- <include name="sc-test-oracle" /> -->
+       <!-- <include name="sc-test-oraclett" /> -->
+       <!-- <include name="sc-test-pointbase" /> -->
+       <!-- <include name="sc-test-solid" /> -->
+
+       <exclude name="sc-test" />
+      </run>
+    </groups>
+
+    <classes>
+      <class name="streamcruncher.test.Suite" />
+
+      <!--
+          These tests has be run only one at a time. Change the groups based on
+          the DB type, above.
+
+          Scroll to the last few lines to see a sample.
+       -->
+
+      <!--
+      <class name="streamcruncher.test.func.oraclett.OracleCaseWhenClauseTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleHighestRowsWindowFTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleLowestRowsWindowFTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleOAConfigurableFTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleOAFJoinTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleOrderAndFulfillmentGeneratorTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleOrderGeneratorTest" />
+      <class name="streamcruncher.test.func.oraclett.OraclePreFilterTriggerTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleRandomRowsWindowFTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleReStockAlertPerfTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleReStockAlertTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleSLAAlertTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleSlidingDeadWindowFTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleSlidingNewWindowFTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleSlidingWF1PartitionTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleSlidingWF2PartitionTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleSlidingWF3PartitionWhereTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleSlidingWFEvtDropTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleSlidingWindowFTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleTimeMaxWindowFTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleTimeWF1ChainedPartitionTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleTimeWF1PartitionAvgCountTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleTimeWF1PartitionTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleTimeWF2PartitionAggTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleTimeWindowFTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleTumblingWF1PartitionEvtWtTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleTumblingWF1PartitionPauseTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleTumblingWindowFTest" />
+
+      <class name="streamcruncher.test.nonfunc.oraclett.OracleStartupShutdownTest" />
+      <class name="streamcruncher.test.nonfunc.oraclett.OracleFunctionGCTest" />
+
+      <class name="streamcruncher.test.func.oraclett.OracleTimeWindowFPerfTest" />
+      <class name="streamcruncher.test.func.oraclett.OracleSlidingNewWindowFPerfTest" />
+
+      <class name="streamcruncher.test.func.oracle.OracleCaseWhenClauseTest" />
+      <class name="streamcruncher.test.func.oracle.OracleClusterHealthTest" />
+      <class name="streamcruncher.test.func.oracle.OracleHighestRowsWindowFTest" />
+      <class name="streamcruncher.test.func.oracle.OracleLowestRowsWindowFTest" />
+      <class name="streamcruncher.test.func.oracle.OracleMultiStreamEventGeneratorChainTest" />
+      <class name="streamcruncher.test.func.oracle.OracleMultiStreamEventGeneratorTest" />
+      <class name="streamcruncher.test.func.oracle.OracleOAConfigurableFTest" />
+      <class name="streamcruncher.test.func.oracle.OracleOAFJoinTest" />
+      <class name="streamcruncher.test.func.oracle.OraclePreFilterTriggerTest" />
+      <class name="streamcruncher.test.func.oracle.OracleReStockAlertTest" />
+      <class name="streamcruncher.test.func.oracle.OracleSLAAlertCorrelationTest" />
+      <class name="streamcruncher.test.func.oracle.OracleSLAAlertTest" />
+      <class name="streamcruncher.test.func.oracle.OracleSlidingDeadWindowFTest" />
+      <class name="streamcruncher.test.func.oracle.OracleSlidingWF1PartitionTest" />
+      <class name="streamcruncher.test.func.oracle.OracleSlidingWF2PartitionTest" />
+      <class name="streamcruncher.test.func.oracle.OracleSlidingWF3PartitionWhereTest" />
+      <class name="streamcruncher.test.func.oracle.OracleSlidingWFEvtDropTest" />
+      <class name="streamcruncher.test.func.oracle.OracleSlidingWindowFTest" />
+      <class name="streamcruncher.test.func.oracle.OracleTimeMaxWindowFTest" />
+      <class name="streamcruncher.test.func.oracle.OracleTimeWF1ChainedPartitionTest" />
+      <class name="streamcruncher.test.func.oracle.OracleTimeWF1PartitionAvgCountTest" />
+      <class name="streamcruncher.test.func.oracle.OracleTimeWF1PartitionTest" />
+      <class name="streamcruncher.test.func.oracle.OracleTimeWF2PartitionAggTest" />
+      <class name="streamcruncher.test.func.oracle.OracleTimeWindowFPerfTest" />
+      <class name="streamcruncher.test.func.oracle.OracleTimeWindowFTest" />
+      <class name="streamcruncher.test.func.oracle.OracleTumblingWF1PartitionEvtWtTest" />
+      <class name="streamcruncher.test.func.oracle.OracleTumblingWF1PartitionPauseTest" />
+      <class name="streamcruncher.test.func.oracle.OracleTumblingWindowFTest" />
+
+      <class name="streamcruncher.test.func.mysql.MySQLHighestRowsWindowFTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLLowestRowsWindowFTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLOAConfigurableFTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLOAFJoinTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLRandomRowsWindowFTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLSLAAlertTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLSlidingDeadWindowFTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLSlidingNewWindowFTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLSlidingWF1PartitionTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLSlidingWF2PartitionTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLSlidingWF3PartitionWhereTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLSlidingWFEvtDropTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLSlidingWindowFTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLTimeMaxWindowFTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLTimeWF1ChainedPartitionTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLTimeWF1PartitionAvgCountTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLTimeWF1PartitionTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLTimeWF2PartitionAggTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLTimeWindowFTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLTumblingWF1PartitionEvtWtTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLTumblingWF1PartitionPauseTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLTumblingWindowFTest" /
+
+      <class name="streamcruncher.test.nonfunc.mysql.MySQLStartupShutdown1Test" />
+
+      <class name="streamcruncher.test.func.mysql.MySQLTimeWindowFPerfTest" />
+      <class name="streamcruncher.test.func.mysql.MySQLSlidingNewWindowFPerfTest" />
+
+      <class name="streamcruncher.test.func.firebird.FirebirdOAConfigurableFTest" />
+      <class name="streamcruncher.test.func.firebird.FirebirdOAFJoinTest" />
+      <class name="streamcruncher.test.func.firebird.FirebirdSLAAlertTest" />
+      <class name="streamcruncher.test.func.firebird.FirebirdTimeWF1ChainedPartitionTest" />
+      <class name="streamcruncher.test.func.firebird.FirebirdTimeWF2PartitionAggTest" />
+
+      <class name="streamcruncher.test.func.derby.DerbyOAConfigurableFTest" />
+      <class name="streamcruncher.test.func.derby.DerbyOAFJoinTest" />
+      <class name="streamcruncher.test.func.derby.DerbySLAAlertTest" />
+      <class name="streamcruncher.test.func.derby.DerbyTimeWF1ChainedPartitionTest" />
+      <class name="streamcruncher.test.func.derby.DerbyTimeWF2PartitionAggTest" />
+
+      <class name="streamcruncher.test.func.solid.SolidCaseWhenClauseTest" />
+      <class name="streamcruncher.test.func.solid.SolidOAConfigurableFTest" />
+      <class name="streamcruncher.test.func.solid.SolidOAFJoinTest" />
+      <class name="streamcruncher.test.func.solid.SolidReStockAlertTest" />
+      <class name="streamcruncher.test.func.solid.SolidSLAAlertTest" />
+      <class name="streamcruncher.test.func.solid.SolidShipmentAggregatorTest" />
+      <class name="streamcruncher.test.func.solid.SolidTimeWF1ChainedPartitionTest" />
+      <class name="streamcruncher.test.func.solid.SolidTimeWF2PartitionAggTest" />
+      <class name="streamcruncher.test.func.solid.SolidTopSellingItemsTest" />
+      <class name="streamcruncher.test.func.solid.SolidTopSellingItemsUpdateGroupTest" />
+
+      <class name="streamcruncher.test.func.ants.AntsOAFJoinTest" />
+      <class name="streamcruncher.test.func.ants.AntsReStockAlertTest" />
+      <class name="streamcruncher.test.func.ants.AntsSLAAlertTest" />
+      <class name="streamcruncher.test.func.ants.AntsShipmentAggregatorTest" />
+      <class name="streamcruncher.test.func.ants.AntsSlidingDeadWindowFTest" />
+      <class name="streamcruncher.test.func.ants.AntsTimeWF2PartitionAggTest" />
+      <class name="streamcruncher.test.func.ants.AntsTopSellingItemsTest" />
+      <class name="streamcruncher.test.func.ants.AntsTopSellingItemsUpdateGroupTest" />
+
+      <class name="streamcruncher.test.func.pointbase.PointBaseCaseWhenClauseTest" />
+      <class name="streamcruncher.test.func.pointbase.PointBasePreFilterTriggerTest" />
+      <class name="streamcruncher.test.func.pointbase.PointBaseReStockAlertTest" />
+      <class name="streamcruncher.test.func.pointbase.PointBaseSLAAlertTest" />
+      <class name="streamcruncher.test.func.pointbase.PointBaseShipmentAggregatorTest" />
+      <class name="streamcruncher.test.func.pointbase.PointBaseSlidingNewWindowFPerfTest" />
+      <class name="streamcruncher.test.func.pointbase.PointBaseTimeWF1ChainedPartitionTest" />
+      <class name="streamcruncher.test.func.pointbase.PointBaseTimeWF1PartitionTest" />
+      <class name="streamcruncher.test.func.pointbase.PointBaseTimeWF2PartitionAggTest" />
+      <class name="streamcruncher.test.func.pointbase.PointBaseTimeWindowFPerfTest" />
+      <class name="streamcruncher.test.func.pointbase.PointBaseTopSellingItemsUpdateGroupTest" />
+
+      (todo Case-When to be implemented) <class name="streamcruncher.test.func.h2.H2CaseWhenClauseTest" />
+      <class name="streamcruncher.test.func.h2.H2ClusterHealthTest" />
+      (todo Bugs in OGNL - Multiplication/Division issues, Case-When to be implemented) <class name="streamcruncher.test.func.h2.H2CorrelationExpressionsTest" />
+      <class name="streamcruncher.test.func.h2.H2HighestRowsWindowFTest" />
+      <class name="streamcruncher.test.func.h2.H2LowestRowsWindowFTest" />
+      <class name="streamcruncher.test.func.h2.H2MultiStreamEventGeneratorChainTest" />
+      <class name="streamcruncher.test.func.h2.H2MultiStreamEventGeneratorTest" />
+      <class name="streamcruncher.test.func.h2.H2OAConfigurableFTest" />
+      <class name="streamcruncher.test.func.h2.H2OAFJoinTest" />
+      <class name="streamcruncher.test.func.h2.H2OutOfOrderEventTest" />
+      (todo IN clause bugs in OGNL - "Exception - no such field: ognl") <class name="streamcruncher.test.func.h2.H2PreFilterSyntaxTest" />
+      <class name="streamcruncher.test.func.h2.H2PreFilterTriggerTest" />
+      <class name="streamcruncher.test.func.h2.H2RandomRowsWindowFTest" />
+      <class name="streamcruncher.test.func.h2.H2ReStockAlertTest" />
+      <class name="streamcruncher.test.func.h2.H2SLAAlertCorrelationTest" />
+      <class name="streamcruncher.test.func.h2.H2SLAAlertTest" />
+      <class name="streamcruncher.test.func.h2.H2ShipmentAggregatorTest" />
+      <class name="streamcruncher.test.func.h2.H2SlidingDeadWindowFTest" />
+      <class name="streamcruncher.test.func.h2.H2SlidingNewWindowFTest" />
+      <class name="streamcruncher.test.func.h2.H2SlidingWF1PartitionTest" />
+      <class name="streamcruncher.test.func.h2.H2SlidingWF2PartitionTest" />
+      <class name="streamcruncher.test.func.h2.H2SlidingWF3PartitionWhereTest" />
+      <class name="streamcruncher.test.func.h2.H2SlidingWFEvtDropTest" />
+      <class name="streamcruncher.test.func.h2.H2SlidingWindowFTest" />
+      <class name="streamcruncher.test.func.h2.H2StockPriceComparisonTest" />
+      <class name="streamcruncher.test.func.h2.H2ThreeEventOrderTest" />
+      <class name="streamcruncher.test.func.h2.H2TimeMaxWindowFTest" />
+      <class name="streamcruncher.test.func.h2.H2TimeWF1ChainedPartitionTest" />
+      <class name="streamcruncher.test.func.h2.H2TimeWF1PartitionAvgCountTest" />
+      <class name="streamcruncher.test.func.h2.H2TimeWF1PartitionTest" />
+      <class name="streamcruncher.test.func.h2.H2TimeWF2PartitionAggTest" />
+      <class name="streamcruncher.test.func.h2.H2TimeWFPartitionWinSizeProviderTest" />
+      <class name="streamcruncher.test.func.h2.H2TimeWindowFTest" />
+      (todo Limit-First to be implemented) <class name="streamcruncher.test.func.h2.H2TopOrLimitClauseTest" />
+      <class name="streamcruncher.test.func.h2.H2TopSellingItemsTest" />
+      <class name="streamcruncher.test.func.h2.H2TopSellingItemsUpdateGroupTest" />
+      <class name="streamcruncher.test.func.h2.H2TumblingWF1PartitionEvtWtTest" />
+      <class name="streamcruncher.test.func.h2.H2TumblingWF1PartitionPauseTest" />
+      <class name="streamcruncher.test.func.h2.H2TumblingWindowFTest" />
+
+      <class name="streamcruncher.test.func.h2.H2CorrelationPerfTest" />
+      <class name="streamcruncher.test.func.h2.H2SlidingNewWindowFPerfTest" />
+      <class name="streamcruncher.test.func.h2.H2TimeWindowFPerfTest" />
+
+      <class name="streamcruncher.test.nonfunc.h2.H2StartupShutdown1Test" />
+      <class name="streamcruncher.test.nonfunc.h2.H2StartupShutdown2Test" />
+      <class name="streamcruncher.test.nonfunc.h2.H2StartupShutdown3Test" />
+      -->
+
+      <!-- This line is uncommented and so this Test will run -->
+      <class name="streamcruncher.test.func.h2.H2StockPriceComparisonTest" />
+    </classes>
+  </test>
+</suite>
