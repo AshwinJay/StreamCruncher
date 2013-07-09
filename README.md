@@ -3,7 +3,7 @@ StreamCruncher
 
 Event Processor - SQL with Sliding Windows, Time Based Windows, Partitions, Aggregates and Multi-Stream Pattern Matching/Event Correlation
 
-More details: [www.StreamCruncher.com](http://streamcruncher.com) and [Old blog posts](http://javaforu.blogspot.com/search/label/%23streamcruncher)
+More details: [www.StreamCruncher.com](http://streamcruncher.com) and [old blog posts](http://javaforu.blogspot.com/search/label/%23streamcruncher)
 
 Releases (yes, this is an old project):
  - Nov 03, 2007 - 2.3 Release Candidate
